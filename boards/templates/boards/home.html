@@ -1,12 +1,55 @@
+{% load static %}
+
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Realtime Whiteboard</title>
+    <title>TEST123</title>
+    <link rel="stylesheet" href="{% static 'boards/css/style.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.1/fabric.min.js"></script>
   </head>
   <body>
-    <h1>Realtime Collaboration Whiteboard</h1>
-    <p>Django + WebSockets Project</p>
+    <nav class="navbar">
+      <div class="logo">WhiteboardPro</div>
+
+      <div class="nav-actions">
+        <button>Share Board</button>
+      </div>
+    </nav>
+
+    <div class="main-container">
+      <div class="toolbar">
+        <button class="tool-btn" id="pencil-tool">
+          <i class="fa-solid fa-pencil"></i>
+        </button>
+
+        <button class="tool-btn" id="rectangle-tool">
+          <i class="fa-regular fa-square"></i>
+        </button>
+
+        <button class="tool-btn" id="circle-tool">
+          <i class="fa-regular fa-circle"></i>
+        </button>
+
+        <button class="tool-btn" id="eraser-tool">
+          <i class="fa-solid fa-eraser"></i>
+        </button>
+
+        <button class="tool-btn" id="text-tool">
+          <i class="fa-solid fa-font"></i>
+        </button>
+      </div>
+
+      <div class="canvas-container">
+        <canvas id="whiteboard"></canvas>
+      </div>
+    </div>
+
+    <script src="{% static 'boards/js/app.js' %}"></script>
   </body>
 </html>
