@@ -5,7 +5,6 @@
   --beige: #f5efeb;
   --white: #ffffff;
 }
-
 * {
   margin: 0;
   padding: 0;
@@ -20,47 +19,93 @@ body {
 .navbar {
   height: 60px;
   background: var(--navy);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 24px;
 }
-
 .logo {
   font-size: 24px;
-  font-weight: bold;
+  font-weight: 700;
   color: var(--white);
-  letter-spacing: 1px;
+}
+.board-title-container {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
-.nav-actions button {
+#board-title {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 22px;
+  font-weight: 600;
+  outline: none;
+  width: 250px;
+}
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.nav-right button {
   padding: 10px 18px;
   border: none;
   border-radius: 10px;
   background: var(--teal);
   color: var(--white);
   cursor: pointer;
-  transition: 0.2s;
+  transition: 0.25s ease;
   font-weight: 600;
 }
-
-.nav-actions button:hover {
+.nav-right button:hover {
   background: #456674;
 }
+
+.collaborators {
+  display: flex;
+  align-items: center;
+}
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--teal);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: -8px;
+  border: 2px solid white;
+  font-weight: bold;
+  font-size: 14px;
+}
+.avatar:first-child {
+  margin-left: 0;
+}
+.main-container {
+  display: flex;
+  height: calc(100vh - 60px);
+}
 .toolbar {
-  width: 90px;
+  position: fixed;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
   background: var(--beige);
-  border-right: 1px solid rgba(0, 0, 0, 0.05);
-  padding-top: 20px;
+  border-radius: 20px;
+  padding-top: 12px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 20px;
+  gap: 12px;
+  box-shadow: 0 10px 25px rgba(47, 65, 86, 0.15);
+  z-index: 1000;
 }
 .tool-btn {
-  width: 55px;
-  height: 55px;
+  width: 48px;
+  height: 48px;
   border: none;
   border-radius: 16px;
   background: var(--white);
@@ -70,17 +115,14 @@ body {
   justify-content: center;
   transition: 0.25s ease;
 }
-
 .tool-btn i {
   font-size: 20px;
   color: var(--navy);
 }
-
 .tool-btn:hover {
   background: var(--teal);
   transform: translateY(-2px);
 }
-
 .tool-btn:hover i {
   color: var(--white);
 }
@@ -90,17 +132,101 @@ body {
 .tool-btn.active i {
   color: var(--white);
 }
-
 .canvas-container {
   flex: 1;
-  position: relative;
   background: var(--white);
-  margin: 18px;
-  border-radius: 20px;
+  margin: 20px;
+  border-radius: 24px;
   overflow: hidden;
+  background-color: #ffffff;
+  background-image: radial-gradient(
+    rgba(30, 41, 53, 0.15) 1.5px,
+    transparent 1px
+  );
+  background-size: 20px 20px;
   box-shadow: 0 10px 30px rgba(47, 65, 86, 0.08);
+  position: relative;
 }
-
 #whiteboard {
   border: none;
+}
+.zoom-controls {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 1000;
+}
+
+.zoom-controls button {
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-radius: 12px;
+  background: white;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+.shape-menu {
+  position: fixed;
+  left: 90px;
+  top: 120px;
+  width: 260px;
+  height: 500px;
+  background: white;
+  border-radius: 16px;
+  padding: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+}
+.hidden {
+  display: none;
+}
+
+.shape-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#shape-search {
+  width: 100%;
+  margin: 12px 0;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+}
+.shape-library {
+  overflow-y: auto;
+  height: 390px;
+}
+
+.shape-section {
+  margin-bottom: 20px;
+}
+
+.shape-section h5 {
+  margin-bottom: 10px;
+  color: #666;
+}
+
+.shape-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.shape-item {
+  height: 50px;
+  border: none;
+  border-radius: 10px;
+  background: #f7f7f7;
+  cursor: pointer;
+  font-size: 22px;
+}
+
+.shape-item:hover {
+  background: #e7eef3;
 }
